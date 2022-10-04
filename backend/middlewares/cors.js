@@ -2,7 +2,6 @@ const allowedCors = [
   'http://cactys.nomoredomains.icu/',
   'https://cactys.nomoredomains.icu/',
   'http://localhost:3000',
-  'https://localhost:3000',
 ];
 
 const DEFAULT_ALLOWED_METHODS = ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'];
