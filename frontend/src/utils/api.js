@@ -16,6 +16,7 @@ class Api {
       method: 'GET',
       headers: this._headers,
     }).then(this._checkingResponse);
+
   }
 
   editUserInfo(data) {
