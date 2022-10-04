@@ -1,6 +1,7 @@
 class Api {
-  constructor({ baseUrl }) {
+  constructor({ baseUrl, headers }) {
     this._url = baseUrl;
+    this._headers = headers;
   }
 
   _checkingResponse(res) {
@@ -14,9 +15,7 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       mode: 'no-cors',
-      headers: {
-          'Content-Type': 'application/json',
-      },
+      headers: this._headers,
     }).then(this._checkingResponse);
   }
 
@@ -24,9 +23,7 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       mode: 'cors',
-      headers: {
-          'Content-Type': 'application/json',
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -38,10 +35,7 @@ class Api {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       mode: 'no-cors',
-      headers: {
-        'Access-Control-Request-Method': 'PATCH',
-        'Conten-Type': 'application/json',
-      },
+      headers: this._headers,
       body: JSON.stringify({
         avatar: data.avatar,
       }),
@@ -59,9 +53,7 @@ class Api {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
       mode: 'no-cors',
-      headers: {
-          'Content-Type': 'application/json',
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: data.title,
         link: data.link,
@@ -73,10 +65,7 @@ class Api {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
       mode: 'no-cors',
-      headers: {
-          'Access-Control-Request-Method': 'DELETE',
-          'Content-Type': 'application/json',
-      }
+      headers: this._headers,
     }).then(this._checkingResponse);
   }
 
@@ -88,9 +77,7 @@ class Api {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'PUT',
       mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
       credentials: 'include',
     }).then(this._checkingResponse);
   }
@@ -106,6 +93,11 @@ class Api {
     return Promise.all([this.getUser(), this.getCards()]);
   }
 }
+
 export const api = new Api({
   baseUrl: 'https://api.cactys.nomoredomains.icu',
+  headers: {
+    'authorization': `Bearer ${localStorage.getItem('jwt')}`,
+    'Content-Type': 'application/json',
+  },
 });
