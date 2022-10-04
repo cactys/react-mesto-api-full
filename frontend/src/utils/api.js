@@ -14,15 +14,21 @@ class Api {
   getUser() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
-      headers: this._headers,
+      credentials: 'include',
+      headers: {
+          'Content-Type': 'application/json'
+      },
     }).then(this._checkingResponse);
-
   }
 
   editUserInfo(data) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+          'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -89,8 +95,4 @@ class Api {
 }
 export const api = new Api({
   baseUrl: 'https://api.cactys.nomoredomains.icu',
-  headers: {
-    authorization: `Bearer ${localStorage.getItem('jwt')}`,
-    'Content-Type': 'application/json',
-  },
 });
