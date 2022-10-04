@@ -14,7 +14,7 @@ class Api {
   getUser() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
-      mode: 'no-cors',
+      credentials: 'include',
       headers: this._headers,
     }).then(this._checkingResponse);
   }
@@ -22,7 +22,7 @@ class Api {
   editUserInfo(data) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
-      mode: 'cors',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
@@ -34,7 +34,7 @@ class Api {
   editAvatar(data) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
-      mode: 'no-cors',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         avatar: data.avatar,
@@ -45,14 +45,14 @@ class Api {
   getCards() {
     return fetch(`${this._url}/cards`, {
       method: 'GET',
-      mode: 'no-cors',
+      credentials: 'include',
     }).then(this._checkingResponse);
   }
 
   addCard(data) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
-      mode: 'no-cors',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name: data.title,
@@ -64,7 +64,7 @@ class Api {
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
-      mode: 'no-cors',
+      credentials: 'include',
       headers: this._headers,
     }).then(this._checkingResponse);
   }
@@ -76,16 +76,15 @@ class Api {
   putLike(id) {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'PUT',
-      mode: 'no-cors',
-      headers: this._headers,
       credentials: 'include',
+      headers: this._headers,
     }).then(this._checkingResponse);
   }
 
   deletLike(id) {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'DELETE',
-      mode: 'no-cors',
+      credentials: 'include',
     }).then(this._checkingResponse);
   }
 
