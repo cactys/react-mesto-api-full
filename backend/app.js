@@ -32,6 +32,12 @@ app.use(cors);
 
 app.use('/', routes);
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.use(auth);
 
 app.use('/users', users);
