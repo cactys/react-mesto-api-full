@@ -5,7 +5,7 @@ import Header from './Header';
 import ImagePopup from './ImagePopup';
 import Footer from './Footer';
 import { api } from '../utils/api';
-import auth from '../utils/auth';
+import { auth } from '../utils/auth';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';

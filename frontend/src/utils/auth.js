@@ -48,10 +48,6 @@ class Auth {
   }
 }
 
-const AUTH_CONFIG = {
+export const auth = new Auth({
   baseUrl: 'https://api.cactys.nomoredomains.icu',
-};
-
-const auth = new Auth(AUTH_CONFIG);
-
-export default auth;
+});
