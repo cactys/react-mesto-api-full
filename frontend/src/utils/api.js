@@ -13,6 +13,7 @@ class Api {
   getUser() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
+      mode: 'no-cors',
       headers: {
           'Content-Type': 'application/json',
       },
@@ -36,6 +37,7 @@ class Api {
   editAvatar(data) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
+      mode: 'no-cors',
       headers: {
         'Access-Control-Request-Method': 'PATCH',
         'Conten-Type': 'application/json',
@@ -49,12 +51,14 @@ class Api {
   getCards() {
     return fetch(`${this._url}/cards`, {
       method: 'GET',
+      mode: 'no-cors',
     }).then(this._checkingResponse);
   }
 
   addCard(data) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
+      mode: 'no-cors',
       headers: {
           'Content-Type': 'application/json',
       },
@@ -68,6 +72,7 @@ class Api {
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
+      mode: 'no-cors',
       headers: {
           'Access-Control-Request-Method': 'DELETE',
           'Content-Type': 'application/json',
@@ -82,6 +87,7 @@ class Api {
   putLike(id) {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'PUT',
+      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -92,6 +98,7 @@ class Api {
   deletLike(id) {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'DELETE',
+      mode: 'no-cors',
     }).then(this._checkingResponse);
   }
 

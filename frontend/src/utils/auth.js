@@ -13,6 +13,7 @@ class Auth {
   signUp(email, password) {
     return fetch(`${this._url}/signup`, {
       method: 'POST',
+      mode: 'no-cors',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -27,6 +28,7 @@ class Auth {
   signIn(email, password) {
     return fetch(`${this._url}/signin`, {
       method: 'POST',
+      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
       },
