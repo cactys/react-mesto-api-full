@@ -1,7 +1,6 @@
 class Api {
-  constructor({ baseUrl, headers }) {
+  constructor({ baseUrl }) {
     this._url = baseUrl;
-    this._headers = headers;
   }
 
   _checkingResponse(res) {
@@ -14,9 +13,8 @@ class Api {
   getUser() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
-      credentials: 'include',
       headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
       },
     }).then(this._checkingResponse);
   }
@@ -25,9 +23,8 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       mode: 'cors',
-      credentials: 'include',
       headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name: data.name,
@@ -39,7 +36,10 @@ class Api {
   editAvatar(data) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        'Access-Control-Request-Method': 'PATCH',
+        'Conten-Type': 'application/json',
+      },
       body: JSON.stringify({
         avatar: data.avatar,
       }),
@@ -49,14 +49,15 @@ class Api {
   getCards() {
     return fetch(`${this._url}/cards`, {
       method: 'GET',
-      headers: this._headers,
     }).then(this._checkingResponse);
   }
 
   addCard(data) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
-      headers: this._headers,
+      headers: {
+          'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         name: data.title,
         link: data.link,
@@ -67,7 +68,10 @@ class Api {
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: this._headers,
+      headers: {
+          'Access-Control-Request-Method': 'DELETE',
+          'Content-Type': 'application/json',
+      }
     }).then(this._checkingResponse);
   }
 
@@ -78,14 +82,16 @@ class Api {
   putLike(id) {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'PUT',
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
     }).then(this._checkingResponse);
   }
 
   deletLike(id) {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'DELETE',
-      headers: this._headers,
     }).then(this._checkingResponse);
   }
 
