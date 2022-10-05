@@ -17,7 +17,7 @@ module.exports.getCurrentUser = (req, res, next) => {
 
   User.findById(_id)
     .then((user) => {
-      res.send({ data: user });
+      res.send({ data: user.toObject() });
     })
     .catch(next);
 };
@@ -82,7 +82,7 @@ module.exports.login = (req, res, next) => {
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 'super-strong-secret', {
+      const token = jwt.sign({ _id: user._id }, 'some-secret-key', { // 'super-strong-secret'
         expiresIn: '7d',
       });
 
@@ -93,6 +93,7 @@ module.exports.login = (req, res, next) => {
         })
         .send({
           email: user.email,
+          message: 'Успешная авторизация',
         })
         .end();
     })
