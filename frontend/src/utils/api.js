@@ -46,6 +46,7 @@ class Api {
     return fetch(`${this._url}/cards`, {
       method: 'GET',
       credentials: 'include',
+      headers: this._headers,
     }).then(this._checkingResponse);
   }
 
@@ -96,6 +97,8 @@ class Api {
 export const api = new Api({
   baseUrl: 'https://api.cactys.nomoredomains.icu',
   headers: {
+    'Accept': 'application/json',
     'Content-Type': 'application/json',
+    // Authorization: `Bearer ${localStorage.getItem('jw')}`
   },
 });
