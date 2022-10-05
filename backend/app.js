@@ -2,12 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+// const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const cards = require('./routes/cards');
 const users = require('./routes/users');
 const auth = require('./middlewares/auth');
-// const cors = require('./middlewares/cors');
+const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes');
 const NotFoundError = require('./errors/not-found-err');
@@ -29,13 +29,7 @@ app.listen(PORT);
 
 app.use(requestLogger); // логгер запросов
 
-app.use(cors({
-  origin: [
-    'cactys.nomoredomains.icu/',
-    'localhost:3000',
-  ],
-  credentials: true,
-}));
+app.use(cors);
 
 app.use('/', routes);
 
