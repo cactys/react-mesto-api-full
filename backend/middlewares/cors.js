@@ -1,6 +1,6 @@
 const allowedCors = [
-  'https://cactys.nomoredomains.icu/',
   'http://localhost:3000',
+  'https://cactys.nomoredomains.icu/',
 ];
 
 module.exports = (req, res, next) => {
