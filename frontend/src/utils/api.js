@@ -96,7 +96,6 @@ class Api {
 export const api = new Api({
   baseUrl: 'https://api.cactys.nomoredomains.icu',
   headers: {
-    'authorization': `Bearer ${localStorage.getItem('jwt')}`,
     'Content-Type': 'application/json',
   },
 });
