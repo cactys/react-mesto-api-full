@@ -94,7 +94,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://api.cactys.nomoredomains.icu/',
+  baseUrl: 'https://api.cactys.nomoredomains.icu',
   headers: {
     'Content-Type': 'application/json',
   },
