@@ -31,8 +31,8 @@ app.use(requestLogger); // логгер запросов
 
 app.use(cors({
   origin: [
-    'http://khortys.nomoredomains.icu/',
-    'https://khortys.nomoredomains.icu/',
+    'https://cactys.nomoredomains.icu/',
+    'http://cactys.nomoredomains.icu/',
     'http://localhost:3000',
     'https://localhost:3000',
   ],
