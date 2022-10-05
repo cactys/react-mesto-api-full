@@ -31,10 +31,8 @@ app.use(requestLogger); // логгер запросов
 
 app.use(cors({
   origin: [
-    'https://cactys.nomoredomains.icu/',
-    'http://cactys.nomoredomains.icu/',
-    'http://localhost:3000',
-    'https://localhost:3000',
+    'cactys.nomoredomains.icu/',
+    'localhost:3000',
   ],
   credentials: true,
 }));
