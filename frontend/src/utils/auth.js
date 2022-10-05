@@ -46,7 +46,7 @@ class Auth {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
     }).then(this._checkingResponse);
   }
