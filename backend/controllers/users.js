@@ -90,14 +90,13 @@ module.exports.login = (req, res, next) => {
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
-          sameSite: true,
+          // sameSite: true,
           // secure: true,
         })
         .send({
           email: user.email,
           message: 'Успешная авторизация',
-        })
-        .end();
+        });
     })
     .catch(next);
 };

@@ -13,7 +13,7 @@ const routes = require('./routes');
 const NotFoundError = require('./errors/not-found-err');
 const { ERROR_500 } = require('./utils/code');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3030 } = process.env;
 
 const app = express();
 
@@ -57,7 +57,7 @@ app.use((err, req, res, next) => {
   const { statusCode = ERROR_500, message } = err;
 
   res
-    .status(err.statusCode)
+    .status(statusCode)
     .send({
       message: statusCode === ERROR_500
         ? 'На сервере произошла ошибка'
