@@ -1,6 +1,5 @@
 const allowedCors = [
   'https://cactys.nomoredomains.icu/',
-  'http://cactys.nomoredomains.icu/',
   'http://localhost:3000',
 ];
 
