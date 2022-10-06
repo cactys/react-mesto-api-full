@@ -52,5 +52,5 @@ class Auth {
 }
 
 export const auth = new Auth({
-  baseUrl: 'https://api.cactys.nomoredomains.icu/',
+  baseUrl: 'https://api.cactys.nomoredomains.icu',
 });
