@@ -46,6 +46,7 @@ const userSchema = new mongoose.Schema(
       useProjection: true,
     },
   },
+  null,
 );
 
 // eslint-disable-next-line func-names

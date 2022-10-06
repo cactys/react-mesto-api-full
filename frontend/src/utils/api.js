@@ -86,6 +86,7 @@ class Api {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'DELETE',
       credentials: 'include',
+      headers: this._headers,
     }).then(this._checkingResponse);
   }
 
@@ -95,10 +96,9 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'http://localhost:3030',
+  baseUrl: 'https://api.cactys.nomoredomains.icu/',
   headers: {
-    'Accept': 'application/json',
+    // authorization: '78b845d7-f9bb-43fd-9d7f-fb92a3c4ec96',
     'Content-Type': 'application/json',
-    // Authorization: `Bearer ${localStorage.getItem('jw')}`
   },
 });

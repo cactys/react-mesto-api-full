@@ -15,7 +15,6 @@ class Auth {
       method: 'POST',
       credentials: 'include',
       headers: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -30,7 +29,6 @@ class Auth {
       method: 'POST',
       credentials: 'include',
       headers: {
-        'Accept': "application/json",
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -40,19 +38,19 @@ class Auth {
     }).then(this._checkingResponse);
   }
 
-  getContent(token) {
+  getContent() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       credentials: 'include',
       headers: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json',
         // Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${localStorage.getItem('jwt')}`
       },
     }).then(this._checkingResponse);
   }
 }
 
 export const auth = new Auth({
-  baseUrl: 'http://localhost:3030',
+  baseUrl: 'https://api.cactys.nomoredomains.icu/',
 });

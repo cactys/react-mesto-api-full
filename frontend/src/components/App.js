@@ -106,9 +106,8 @@ const App = () => {
       const jwt = localStorage.getItem('jwt');
       if (jwt) {
         auth
-          .getContent(jwt)
+          .getContent()
           .then((res) => {
-
             if (res && res.data.email) {
               setData({
                 email: res.data.email,
@@ -241,7 +240,7 @@ const App = () => {
             <Register handleRegister={handleRegister} />
           </Route>
           <Route>
-            {!isLogin ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+            {isLogin ? <Redirect to="/main" /> : <Redirect to="/sign-in" />}
           </Route>
         </Switch>
         <Footer />
