@@ -26,6 +26,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
+app.listen(PORT);
+
 app.use(requestLogger); // логгер запросов
 
 app.use(cors);
@@ -65,5 +67,3 @@ app.use((err, req, res, next) => {
 
   next();
 });
-
-app.listen(PORT);
