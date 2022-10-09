@@ -1,4 +1,4 @@
-module.exports.code = {
+module.exports = {
   CODE_200: 200,
   CODE_201: 201,
   ERROR_400: 400, // с запросом что-то не так
