@@ -1,4 +1,4 @@
-const code = {
+module.exports.code = {
   CODE_200: 200,
   CODE_201: 201,
   ERROR_400: 400, // с запросом что-то не так
@@ -9,4 +9,4 @@ const code = {
   ERROR_500: 500, // на сервере что-то пошло не так
 };
 
-module.exports = code;
+// module.exports = code;

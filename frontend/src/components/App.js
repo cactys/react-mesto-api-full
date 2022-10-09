@@ -26,10 +26,7 @@ const App = () => {
   const [isTooltipPopupOpen, setIsTooltipPopupOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [infoTooltip, setInfoTooltip] = useState({});
-  const [data, setData] = useState({
-    email: '',
-    password: '',
-  });
+  const [data, setData] = useState({});
 
   const history = useHistory();
 

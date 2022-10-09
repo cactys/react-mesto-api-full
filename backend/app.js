@@ -2,18 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const bodyParser = require('body-parser');
-// const cors = require('cors');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const cards = require('./routes/cards');
 const users = require('./routes/users');
 const auth = require('./middlewares/auth');
-const cors = require('./middlewares/cors');
+// const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes');
 const NotFoundError = require('./errors/not-found-err');
 const { ERROR_500 } = require('./utils/code');
+const { allowedCors } = require('./utils/allowed-cors');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3030 } = process.env;
 
 const app = express();
 
@@ -29,7 +30,7 @@ app.listen(PORT);
 
 app.use(requestLogger); // логгер запросов
 
-app.use(cors);
+app.use(cors(allowedCors));
 
 app.use('/', routes);
 

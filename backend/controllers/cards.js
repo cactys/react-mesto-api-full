@@ -69,7 +69,7 @@ module.exports.likeCard = (req, res, next) => {
       if (card === null) {
         throw new NotFoundError('Картачка не найдена');
       }
-      return res.status(CODE_200).send({ data: card, message: 'LIKE' });
+      return res.status(CODE_200).send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -95,7 +95,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (card === null) {
         throw new NotFoundError('Картачка не найдена');
       }
-      return res.status(CODE_200).send({ data: card, message: 'DISLIKE' });
+      return res.status(CODE_200).send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
