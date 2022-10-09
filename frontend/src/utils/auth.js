@@ -1,3 +1,5 @@
+import { baseUrl } from "./base-url";
+
 class Auth {
   constructor({ baseUrl }) {
     this._url = baseUrl;
@@ -52,5 +54,5 @@ class Auth {
 }
 
 export const auth = new Auth({
-  baseUrl: 'http://localhost:3030',
+  baseUrl: baseUrl,
 });

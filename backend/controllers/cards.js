@@ -44,7 +44,7 @@ module.exports.deleteCard = (req, res, next) => {
       return card;
     })
     .then((card) => Card.deleteOne(card))
-    .then((card) => res.status(CODE_200).send({ card, message: 'DELETE' }))
+    .then((card) => res.status(CODE_200).send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Картачка не найдена'));
@@ -66,11 +66,10 @@ module.exports.likeCard = (req, res, next) => {
     { new: true },
   )
     .then((card) => {
-      console.log(card);
       if (card === null) {
         throw new NotFoundError('Картачка не найдена');
       }
-      return res.status(CODE_200).send(card);
+      res.status(CODE_200).send({ data: card, message: 'LIKE' });
     })
     .catch((err) => {
       if (err.name === 'CastError') {

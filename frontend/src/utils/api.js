@@ -1,3 +1,5 @@
+import { baseUrl } from "./base-url";
+
 class Api {
   constructor({ baseUrl, headers }) {
     this._url = baseUrl;
@@ -20,7 +22,6 @@ class Api {
   }
 
   editUserInfo(data) {
-    console.log(data);
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
@@ -63,8 +64,8 @@ class Api {
     }).then(this._checkingResponse);
   }
 
-  deleteCard(cardId) {
-    return fetch(`${this._url}/cards/${cardId}`, {
+  deleteCard(id) {
+    return fetch(`${this._url}/cards/${id}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: this._headers,
@@ -76,7 +77,7 @@ class Api {
   }
 
   putLike(id) {
-    return fetch(`${this._url}/cards/${id}/likes`, {
+    return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'PUT',
       credentials: 'include',
       headers: this._headers,
@@ -84,7 +85,7 @@ class Api {
   }
 
   deletLike(id) {
-    return fetch(`${this._url}/cards/${id}/likes`, {
+    return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: this._headers,
@@ -97,7 +98,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'http://localhost:3030',
+  baseUrl: baseUrl,
   headers: {
     // authorization: '78b845d7-f9bb-43fd-9d7f-fb92a3c4ec96',
     'Content-Type': 'application/json',
