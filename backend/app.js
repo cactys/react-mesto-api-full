@@ -2,35 +2,33 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+// const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const cards = require('./routes/cards');
 const users = require('./routes/users');
 const auth = require('./middlewares/auth');
-// const cors = require('./middlewares/cors');
+const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes');
 const NotFoundError = require('./errors/not-found-err');
 const { ERROR_500 } = require('./utils/code');
-const { allowedCors } = require('./utils/allowed-cors');
+// const { allowedCors } = require('./utils/allowed-cors');
 
 const { PORT = 3030 } = process.env;
 
 const app = express();
 
-app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-app.listen(PORT);
-
 app.use(requestLogger); // логгер запросов
 
-app.use(cors(allowedCors));
+app.use(cors);
 
 app.use('/', routes);
 
@@ -67,3 +65,5 @@ app.use((err, req, res, next) => {
 
   next();
 });
+
+app.listen(PORT);
