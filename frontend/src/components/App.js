@@ -76,7 +76,7 @@ const App = () => {
             email: email,
           });
           setIsLogin(true);
-          history.replace({ pathname: '/main' });
+          history.replace({ pathname: '/' });
         }
       })
       .catch((err) => {
@@ -110,7 +110,7 @@ const App = () => {
                 email: res.email,
               });
               setIsLogin(true);
-              history.push('/main');
+              history.push('/');
             } else {
               history.push('/sign-in');
             }
@@ -188,7 +188,6 @@ const App = () => {
       .editUserInfo(data)
       .then((res) => {
         setCurrentUser(res);
-        console.log(res);
         closeAllPopups();
       })
       .catch((err) => console.log(err));

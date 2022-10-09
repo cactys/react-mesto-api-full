@@ -6,9 +6,10 @@ const { CODE_200 } = require('../utils/code');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
+    .populate('owner')
     .then((card) => {
       if (card !== null) {
-        res.send(card);
+        res.status(CODE_200).send(card);
       }
     })
     .catch(next);
@@ -44,7 +45,7 @@ module.exports.deleteCard = (req, res, next) => {
       return card;
     })
     .then((card) => Card.deleteOne(card))
-    .then((card) => res.status(CODE_200).send(card))
+    .then((card) => res.status(CODE_200).send({ data: card, message: 'DELETE' }))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Картачка не найдена'));
@@ -69,7 +70,7 @@ module.exports.likeCard = (req, res, next) => {
       if (card === null) {
         throw new NotFoundError('Картачка не найдена');
       }
-      res.status(CODE_200).send({ data: card, message: 'LIKE' });
+      res.status(CODE_200).send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {

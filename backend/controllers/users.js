@@ -120,13 +120,9 @@ module.exports.updateUser = (req, res, next) => {
       if (user === null) {
         throw new NotFoundError('Запрашиваемый пользователь не найден');
       }
-      console.log({ name: user.name, about: user.about });
       return res
         .status(CODE_200)
-        .send({
-          name: user.name,
-          about: user.about,
-        });
+        .send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -152,9 +148,7 @@ module.exports.updateAvatar = (req, res, next) => {
       }
       return res
         .status(CODE_200)
-        .send({
-          avatar: user.avatar,
-        });
+        .send(user.toObject());
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
