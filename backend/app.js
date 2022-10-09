@@ -22,11 +22,11 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.listen(PORT);
-
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
+
+app.listen(PORT);
 
 app.use(requestLogger); // логгер запросов
 
