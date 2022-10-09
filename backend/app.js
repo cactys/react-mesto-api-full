@@ -14,21 +14,22 @@ const routes = require('./routes');
 const NotFoundError = require('./errors/not-found-err');
 const { ERROR_500 } = require('./utils/code');
 
-const { PORT } = process.env;
+// eslint-disable-next-line prefer-destructuring
+const PORT = process.env.PORT;
 
 const app = express();
 
-app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-app.listen(PORT);
-
 app.use(requestLogger); // логгер запросов
+
+app.listen(PORT);
 
 app.use(cors);
 

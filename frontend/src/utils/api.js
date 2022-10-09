@@ -20,6 +20,7 @@ class Api {
   }
 
   editUserInfo(data) {
+    console.log(data);
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
@@ -75,7 +76,7 @@ class Api {
   }
 
   putLike(id) {
-    return fetch(`${this._url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'PUT',
       credentials: 'include',
       headers: this._headers,
@@ -83,7 +84,7 @@ class Api {
   }
 
   deletLike(id) {
-    return fetch(`${this._url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'DELETE',
       credentials: 'include',
       headers: this._headers,
@@ -96,7 +97,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://api.cactys.nomoredomains.icu',
+  baseUrl: 'http://localhost:3030',
   headers: {
     // authorization: '78b845d7-f9bb-43fd-9d7f-fb92a3c4ec96',
     'Content-Type': 'application/json',

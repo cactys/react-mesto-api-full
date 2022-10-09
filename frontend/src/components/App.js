@@ -21,7 +21,7 @@ const App = () => {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState('');
+  const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [isTooltipPopupOpen, setIsTooltipPopupOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
@@ -105,9 +105,9 @@ const App = () => {
         auth
           .getContent()
           .then((res) => {
-            if (res && res.data.email) {
+            if (res && res.email) {
               setData({
-                email: res.data.email,
+                email: res.email,
               });
               setIsLogin(true);
               history.push('/main');
@@ -124,6 +124,7 @@ const App = () => {
     api
       .getUser()
       .then((res) => {
+        console.log(res);
         setCurrentUser(res);
       })
       .catch((err) => console.log(err));
@@ -155,12 +156,16 @@ const App = () => {
   const handleCardLike = (card) => {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
 
+    console.log(isLiked);
+    console.log(card);
+
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
-        setCards((state) =>
+        setCards((state) => {
+          console.log(state);
           state.map((c) => (c._id === card._id ? newCard : c))
-        );
+        });
       })
       .catch((err) => console.log(err));
   };
@@ -184,10 +189,12 @@ const App = () => {
   };
 
   const handleUpdateUser = (data) => {
+    console.log(data);
     api
       .editUserInfo(data)
       .then((res) => {
         setCurrentUser(res);
+        console.log(res);
         closeAllPopups();
       })
       .catch((err) => console.log(err));

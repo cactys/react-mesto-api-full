@@ -66,6 +66,7 @@ module.exports.likeCard = (req, res, next) => {
     { new: true },
   )
     .then((card) => {
+      console.log(card);
       if (card === null) {
         throw new NotFoundError('Картачка не найдена');
       }
