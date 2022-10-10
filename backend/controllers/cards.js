@@ -37,7 +37,7 @@ module.exports.deleteCard = (req, res, next) => {
   Card.findById(cardId)
     .then((card) => {
       if (card === null) {
-        throw new NotFoundError('Картачка не найдена');
+        throw new NotFoundError('Карточка не найдена');
       }
       if (card.owner.toString() !== ownerId) {
         throw new ForbiddenError();
@@ -48,7 +48,7 @@ module.exports.deleteCard = (req, res, next) => {
     .then((card) => res.status(CODE_200).send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError('Картачка не найдена'));
+        next(new BadRequestError('Карточка не найдена'));
         return;
       }
       next(err);
@@ -68,13 +68,13 @@ module.exports.likeCard = (req, res, next) => {
   )
     .then((card) => {
       if (card === null) {
-        throw new NotFoundError('Картачка не найдена');
+        throw new NotFoundError('Карточка не найдена');
       }
-      res.status(CODE_200).send({ data: card });
+      res.status(CODE_200).send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError('Картачка не найдена'));
+        next(new BadRequestError('Карточка не найдена'));
         return;
       }
       next(err);
@@ -94,13 +94,13 @@ module.exports.dislikeCard = (req, res, next) => {
   )
     .then((card) => {
       if (card === null) {
-        throw new NotFoundError('Картачка не найдена');
+        throw new NotFoundError('Карточка не найдена');
       }
-      return res.status(CODE_200).send({ data: card });
+      res.status(CODE_200).send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError('Картачка не найдена'));
+        next(new BadRequestError('Карточка не найдена'));
         return;
       }
       next(err);

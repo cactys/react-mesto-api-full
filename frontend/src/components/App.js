@@ -21,12 +21,15 @@ const App = () => {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState('');
   const [cards, setCards] = useState([]);
   const [isTooltipPopupOpen, setIsTooltipPopupOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [infoTooltip, setInfoTooltip] = useState({});
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    email: '',
+    password: '',
+  });
 
   const history = useHistory();
 
@@ -76,7 +79,7 @@ const App = () => {
             email: email,
           });
           setIsLogin(true);
-          history.replace({ pathname: '/' });
+          history.replace({ pathname: '/main' });
         }
       })
       .catch((err) => {
@@ -110,7 +113,7 @@ const App = () => {
                 email: res.email,
               });
               setIsLogin(true);
-              history.push('/');
+              history.push('/main');
             } else {
               history.push('/sign-in');
             }
@@ -153,15 +156,12 @@ const App = () => {
   };
 
   const handleCardLike = (card) => {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-
-    console.log(isLiked, card.likes);
+    const isLiked = card.likes.some((user) => user._id === currentUser._id);
 
     api
       .changeLikeCardStatus(card._id, !isLiked)
-      .then((card) => {
+      .then(() => {
         setCards((state) => {
-          console.log(state);
           state.map((c) => (c._id === card._id ? card : c));
         });
       })
