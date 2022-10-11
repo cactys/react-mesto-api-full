@@ -53,6 +53,7 @@ class Api {
   }
 
   addCard(data) {
+    console.log(data);
     return fetch(`${this._url}/cards`, {
       method: 'POST',
       credentials: 'include',

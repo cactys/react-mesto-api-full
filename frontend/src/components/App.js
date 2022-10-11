@@ -106,7 +106,7 @@ const App = () => {
       const jwt = localStorage.getItem('jwt');
       if (jwt) {
         auth
-          .getContent()
+          .getContent(jwt)
           .then((res) => {
             if (res && res.email) {
               setData({
@@ -156,14 +156,14 @@ const App = () => {
   };
 
   const handleCardLike = (card) => {
-    const isLiked = card.likes.some((user) => user._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
 
     api
       .changeLikeCardStatus(card._id, !isLiked)
-      .then(() => {
-        setCards((state) => {
-          state.map((c) => (c._id === card._id ? card : c));
-        });
+      .then((newCard) => {
+        setCards((state) =>
+          state.map((c) => (c._id === card._id ? newCard : c))
+        );
       })
       .catch((err) => console.log(err));
   };
@@ -240,7 +240,7 @@ const App = () => {
             <Register handleRegister={handleRegister} />
           </Route>
           <Route>
-            {isLogin ? <Redirect to="/main" /> : <Redirect to="/sign-in" />}
+            {!isLogin ? <Redirect to="/main" /> : <Redirect to="/sign-in" />}
           </Route>
         </Switch>
         <Footer />
