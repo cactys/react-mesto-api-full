@@ -6,12 +6,7 @@ const { CODE_200 } = require('../utils/code');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .populate('owner')
-    .then((card) => {
-      if (card !== null) {
-        res.status(CODE_200).send(card);
-      }
-    })
+    .then((card) => res.send(card))
     .catch(next);
 };
 
@@ -37,7 +32,7 @@ module.exports.deleteCard = (req, res, next) => {
   Card.findById(cardId)
     .then((card) => {
       if (card === null) {
-        throw new NotFoundError('Карточка не найдена');
+        throw new NotFoundError('Картачка не найдена');
       }
       if (card.owner.toString() !== ownerId) {
         throw new ForbiddenError();
@@ -48,7 +43,7 @@ module.exports.deleteCard = (req, res, next) => {
     .then((card) => res.status(CODE_200).send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError('Карточка не найдена'));
+        next(new BadRequestError('Картачка не найдена'));
         return;
       }
       next(err);
@@ -66,15 +61,16 @@ module.exports.likeCard = (req, res, next) => {
     },
     { new: true },
   )
+    // .populate('owner')
     .then((card) => {
       if (card === null) {
-        throw new NotFoundError('Карточка не найдена');
+        throw new NotFoundError('Картачка не найдена');
       }
-      res.status(CODE_200).send(card);
+      return res.status(CODE_200).send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError('Карточка не найдена'));
+        next(new BadRequestError('Картачка не найдена'));
         return;
       }
       next(err);
@@ -92,15 +88,16 @@ module.exports.dislikeCard = (req, res, next) => {
     },
     { new: true },
   )
+    // .populate('owner')
     .then((card) => {
       if (card === null) {
-        throw new NotFoundError('Карточка не найдена');
+        throw new NotFoundError('Картачка не найдена');
       }
-      res.status(CODE_200).send(card);
+      return res.status(CODE_200).send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError('Карточка не найдена'));
+        next(new BadRequestError('Картачка не найдена'));
         return;
       }
       next(err);

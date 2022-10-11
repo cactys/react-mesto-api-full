@@ -23,7 +23,7 @@ const Register = ({ handleRegister }) => {
 
   return (
     <AuthForm
-      name="sign-in"
+      name="signin"
       title="Регистрация"
       onSubmit={handleSubmit}
       buttonText="Зарегистрироваться"
