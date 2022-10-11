@@ -73,21 +73,21 @@ const App = () => {
     auth
       .signIn(email, password)
       .then((res) => {
-        // if (res.token) {
+        if (res.token) {
           localStorage.setItem('jwt', res.token);
           setData({
             password: password,
             email: email,
           });
           setIsLogin(true);
-          history.push('/main');
-        // }
+        }
       })
       .catch((err) => {
         console.log(err);
         setInfoTooltip(false);
       })
       .finally(() => {
+        history.push({ pathname: '/main' });
         setIsTooltipPopupOpen(true);
       });
   };
