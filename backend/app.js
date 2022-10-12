@@ -15,9 +15,11 @@ const NotFoundError = require('./errors/not-found-err');
 const { ERROR_500 } = require('./utils/code');
 
 // eslint-disable-next-line prefer-destructuring
-const PORT = process.env.PORT;
+const { PORT } = process.env;
 
 const app = express();
+
+console.log(process.env.NODE_ENV);
 
 app.use(cookieParser());
 app.use(bodyParser.json());
