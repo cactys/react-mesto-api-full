@@ -100,6 +100,7 @@ module.exports.login = (req, res, next) => {
           // secure: true,
         })
         .send({
+          token,
           email: user.email,
           message: 'Успешная авторизация',
         });

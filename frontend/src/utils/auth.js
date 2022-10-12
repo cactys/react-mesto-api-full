@@ -40,14 +40,13 @@ class Auth {
     }).then(this._checkingResponse);
   }
 
-  getContent() {
+  getContent(token) {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        // Authorization: `Bearer ${token}`,
-        // Authorization: `Bearer ${localStorage.getItem('jwt')}`
+        'Authorization': `Bearer ${token}`,
       },
     }).then(this._checkingResponse);
   }

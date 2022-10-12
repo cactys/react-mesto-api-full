@@ -67,19 +67,22 @@ const App = () => {
         setIsTooltipPopupOpen(true);
         setInfoTooltip(false);
       });
+
   };
 
   const handleLogin = (email, password) => {
     auth
-      .signIn(email, password)
-      .then((res) => {
-        if (res.token) {
+    .signIn(email, password)
+    .then((res) => {
+      console.log(res);
+      if (res.token) {
           localStorage.setItem('jwt', res.token);
           setData({
             password: password,
             email: email,
           });
           setIsLogin(true);
+          history.replace('/main');
         }
       })
       .catch((err) => {
@@ -87,7 +90,6 @@ const App = () => {
         setInfoTooltip(false);
       })
       .finally(() => {
-        history.push({ pathname: '/main' });
         setIsTooltipPopupOpen(true);
       });
   };
@@ -107,21 +109,20 @@ const App = () => {
       const jwt = localStorage.getItem('jwt');
       if (jwt) {
         auth
-          .getContent(jwt)
-          .then((res) => {
-            if (res && res.email) {
-              setData({
-                email: res.email,
-              });
-              setIsLogin(true);
-              history.push('/main');
-            } else {
-              history.push('/sign-in');
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        .getContent(jwt)
+        .then((res) => {
+          if (res && res.email) {
+            console.log(res);
+            setData(res);
+            setIsLogin(true);
+            history.push('/main');
+          } else {
+            history.push('/sign-in');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       }
     };
     tokenCheck();
@@ -137,7 +138,7 @@ const App = () => {
         setCards(res);
       })
       .catch((err) => console.log(err));
-  }, [history, isLogin]);
+  }, [history]);
 
   const handleEditProfileClick = () => {
     setIsEditProfilePopupOpen(true);
