@@ -46,7 +46,7 @@ const Main = ({
               onCardLike={onCardLike}
               onCardDelete={onCardDelete}
             />
-          ))}
+          )).reverse()}
         </ul>
       </div>
     </main>

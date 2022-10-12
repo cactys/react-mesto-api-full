@@ -10,7 +10,7 @@ module.exports.getUsers = (req, res, next) => {
   User.find({})
     .then((user) => {
       if (user) {
-        res.send(user.toObject());
+        res.send({ data: user.toObject() });
       }
     })
     .catch(next);
@@ -22,7 +22,7 @@ module.exports.getCurrentUser = (req, res, next) => {
   User.findById(_id)
     .then((user) => {
       if (user) {
-        res.send(user.toObject());
+        res.send({ data: user.toObject() });
       }
     })
     .catch(next);
@@ -36,7 +36,7 @@ module.exports.getUserId = (req, res, next) => {
       if (user === null) {
         throw new NotFoundError('Запрашиваемый пользователь не найден');
       }
-      return res.send(user.toObject());
+      return res.send({ data: user.toObject() });
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -68,7 +68,7 @@ module.exports.createUser = (req, res, next) => {
     .then((user) => {
       res
         .status(CODE_201)
-        .send(user.toObject());
+        .send({ data: user.toObject() });
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -101,7 +101,7 @@ module.exports.login = (req, res, next) => {
         })
         .send({
           token,
-          email: user.email,
+          data: user,
           message: 'Успешная авторизация',
         });
     })
@@ -123,7 +123,7 @@ module.exports.updateUser = (req, res, next) => {
       }
       return res
         .status(CODE_200)
-        .send(user);
+        .send(user.toObject());
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {

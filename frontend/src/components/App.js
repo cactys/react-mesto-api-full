@@ -74,13 +74,13 @@ const App = () => {
     auth
     .signIn(email, password)
     .then((res) => {
-      console.log(res);
       if (res.token) {
           localStorage.setItem('jwt', res.token);
           setData({
             password: password,
             email: email,
           });
+          setCurrentUser(res.data);
           setIsLogin(true);
           history.replace('/main');
         }
@@ -111,9 +111,12 @@ const App = () => {
         auth
         .getContent(jwt)
         .then((res) => {
-          if (res && res.email) {
-            console.log(res);
-            setData(res);
+          if (res && res.data.email) {
+            setData({
+              password: res.data.password,
+              email: res.data.email,
+            });
+            setCurrentUser(res.data);
             setIsLogin(true);
             history.push('/main');
           } else {
@@ -129,7 +132,7 @@ const App = () => {
     api
       .getUser()
       .then((res) => {
-        setCurrentUser(res);
+        setCurrentUser(res.data);
       })
       .catch((err) => console.log(err));
     api
@@ -212,7 +215,7 @@ const App = () => {
     api
       .addCard(data)
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([...cards, newCard]);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
