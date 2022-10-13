@@ -100,7 +100,6 @@ class Api {
 export const api = new Api({
   baseUrl: baseUrl,
   headers: {
-    // authorization: '78b845d7-f9bb-43fd-9d7f-fb92a3c4ec96',
     'Content-Type': 'application/json',
   },
 });

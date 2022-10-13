@@ -3,14 +3,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 const Header = ({ loggedOut, email }) => {
   return (
     <header className="header">
-      {/* <div className="header__container"> */}
         <div className="header__logo" />
-        {/* <div className="header__burger">
-          <span className="header__berger-line header__burger-line_1" />
-          <span className="header__berger-line header__burger-line_2" />
-          <span className="header__berger-line header__burger-line_3" />
-        </div>
-      </div> */}
       <Switch>
         <Route path="/sign-in">
           <Link className="header__link" to="/sign-up">

@@ -109,7 +109,7 @@ const App = () => {
       const jwt = localStorage.getItem('jwt');
       if (jwt) {
         auth
-        .getContent(jwt)
+        .getContent()
         .then((res) => {
           if (res && res.data.email) {
             setData({

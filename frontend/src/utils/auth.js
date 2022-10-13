@@ -40,13 +40,12 @@ class Auth {
     }).then(this._checkingResponse);
   }
 
-  getContent(token) {
+  getContent() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
       },
     }).then(this._checkingResponse);
   }

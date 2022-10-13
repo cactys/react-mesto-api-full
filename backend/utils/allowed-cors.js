@@ -6,5 +6,4 @@ module.exports.allowedCors = {
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   credentials: true,
   headers: 'access-control-request-headers',
-  // optionsSuccessStatus: 200,
 };
