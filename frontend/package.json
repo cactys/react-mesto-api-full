@@ -41,6 +41,6 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0",
-    "nth-check": "^2.1.1"
+    "nth-check": "^2.0.1"
   }
 }
