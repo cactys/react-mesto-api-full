@@ -1,4 +1,4 @@
-const { NODE_ENV = 'dev-key', JWT_SECRET } = process.env;
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
