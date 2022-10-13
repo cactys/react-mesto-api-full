@@ -74,7 +74,6 @@ const App = () => {
     auth
     .signIn(email, password)
     .then((res) => {
-      console.log(res);
       if (res.token) {
           localStorage.setItem('jwt', res.token);
           setData({
@@ -142,7 +141,7 @@ const App = () => {
         setCards(res);
       })
       .catch((err) => console.log(err));
-  }, [history]);
+  }, [history, isLogin]);
 
   const handleEditProfileClick = () => {
     setIsEditProfilePopupOpen(true);
