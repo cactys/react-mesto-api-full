@@ -18,6 +18,7 @@ class Auth {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
       },
       body: JSON.stringify({
         password: password,
@@ -32,6 +33,7 @@ class Auth {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
       },
       body: JSON.stringify({
         password: password,
@@ -46,6 +48,7 @@ class Auth {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
       },
     }).then(this._checkingResponse);
   }

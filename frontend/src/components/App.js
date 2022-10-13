@@ -74,6 +74,7 @@ const App = () => {
     auth
     .signIn(email, password)
     .then((res) => {
+      console.log(res);
       if (res.token) {
           localStorage.setItem('jwt', res.token);
           setData({
@@ -82,7 +83,7 @@ const App = () => {
           });
           setCurrentUser(res.data);
           setIsLogin(true);
-          history.replace('/main');
+          history.push('/main'); // replace('/main');
         }
       })
       .catch((err) => {
