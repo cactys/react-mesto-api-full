@@ -82,7 +82,7 @@ const App = () => {
           });
           setCurrentUser(res.data);
           setIsLogin(true);
-          history.push('/main'); // replace('/main');
+          history.push('/main');
         }
       })
       .catch((err) => {
@@ -95,13 +95,16 @@ const App = () => {
   };
 
   const signOut = () => {
-    localStorage.removeItem('jwt');
-    setData({
-      email: '',
-      password: '',
-    });
-    setIsLogin(false);
-    history.push('/sign-in');
+    auth
+      .signOut()
+      .then(() => {
+        setData({
+          email: '',
+          password: '',
+        });
+        setIsLogin(false);
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {

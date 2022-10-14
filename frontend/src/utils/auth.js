@@ -18,7 +18,6 @@ class Auth {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
       },
       body: JSON.stringify({
         password: password,
@@ -33,12 +32,21 @@ class Auth {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
       },
       body: JSON.stringify({
         password: password,
         email: email,
       }),
+    }).then(this._checkingResponse);
+  }
+
+  signOut() {
+    return fetch(`${this._url}/signout`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     }).then(this._checkingResponse);
   }
 
@@ -48,7 +56,6 @@ class Auth {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
       },
     }).then(this._checkingResponse);
   }

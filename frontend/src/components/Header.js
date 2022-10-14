@@ -1,6 +1,6 @@
 import { Link, Route, Switch } from 'react-router-dom';
 
-const Header = ({ loggedOut, email }) => {
+const Header = ({ signOut, email }) => {
   return (
     <header className="header">
         <div className="header__logo" />
@@ -18,7 +18,7 @@ const Header = ({ loggedOut, email }) => {
         <Route path="/main">
           <div className="header__login">
             <p className="header__email">{email}</p>
-            <Link className="header__logout" to="/sign-in" onClick={loggedOut}>
+            <Link className="header__logout" to="/sign-in" onClick={signOut}>
               Выйти
             </Link>
           </div>

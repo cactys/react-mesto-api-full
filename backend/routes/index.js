@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
-const { login, createUser } = require('../controllers/users');
+const { login, createUser, signOut } = require('../controllers/users');
 const { patternUrl } = require('../utils/pattern');
 
 router.post('/signin', celebrate({
@@ -19,5 +19,7 @@ router.post('/signup', celebrate({
     avatar: Joi.string().uri().regex(patternUrl),
   }),
 }), createUser);
+
+router.get('/signout', signOut);
 
 module.exports = router;

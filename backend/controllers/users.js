@@ -98,6 +98,8 @@ module.exports.login = (req, res, next) => {
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
+          secure: true,
+          sameSite: 'none',
         })
         .send({
           token,
@@ -106,6 +108,16 @@ module.exports.login = (req, res, next) => {
         });
     })
     .catch(next);
+};
+
+module.exports.signOut = (req, res) => {
+  res.cookie('jwt', '*', {
+    maxAge: 10,
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+  })
+    .send({ message: 'sign out' });
 };
 
 module.exports.updateUser = (req, res, next) => {
