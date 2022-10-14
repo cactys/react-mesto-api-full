@@ -82,6 +82,7 @@ const App = () => {
           });
           setCurrentUser(res.data);
           setIsLogin(true);
+          setInfoTooltip(true);
           history.push('/main');
         }
       })
