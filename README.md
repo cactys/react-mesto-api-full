@@ -1,6 +1,4 @@
 # react-mesto-api-full
-## IP
-178.154.223.128
 ## FRONTEND
 https://cactys.nomoredomains.icu
 ## BACKEND
