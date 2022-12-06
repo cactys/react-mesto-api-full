@@ -63,7 +63,7 @@
 ```sh
     git clone https://github.com/cactys/react-mesto-api-full.git
 ```
-4. Перейти в каталог
+4. Перейти в каталог:
 ```sh
     frontend 'cd ./frontend'
 ```
