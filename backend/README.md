@@ -46,11 +46,15 @@ ___
 ```sh
     git clone https://github.com/cactys/express-mesto-gha.git
 ```
-4. Установите зависимости:
+4. Перейти в каталог:
+```sh
+    backend 'cd ./backend'
+```
+5. Установите зависимости:
 ```sh
     npm i
 ```
-5. Запустить проект:
+6. Запустить проект:
   - запускает сервер
 ```sh
     npm run start
