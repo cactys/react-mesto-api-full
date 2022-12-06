@@ -2,18 +2,19 @@
 
 <p align="center"><kbd> <img width="768" height="auto" align="center" src="./DEMO.gif" alt="DEMO"> </kbd></p>
 
-**[Ссылка на DEMO проекта](https://cactys.github.io/react-mesto-auth/)**  
+**[Ссылка на DEMO проекта](https://cactys.nomoredomains.icu/sign-in)**  
   - *[макет Figma](https://www.figma.com/file/5H3gsn5lIGPwzBPby9jAOo/JavaScript.-Sprint-12?node-id=0%3A1)*
 
 Интерактивная страница, на которой пользователи могут делиться фотографиями, удалять их и ставить лайки.  
 Рефакторинг проекта [Mesto-React](https://github.com/cactys/mesto-react). Добавлена регистрация и авторизация пользователя.
 
 ---
-Учебный проект создан в период прохождения 11-12 спринтов курса Веб-разработчик.
+Заключительный учебный проект Яндекс.Практикум, курс 'Веб-разработчик'.
 Цель проекта:
 + закрепить на практике пройденный учебный материал.
   - Добавление регистрации и авторизации пользователя
   - Работа c локальным хранилищем и JWT-токеном
+  - Подключение к собственному API серверу
 
 ---
 ## Проектная работа студента Яндекс.Практикум
@@ -60,13 +61,17 @@
 2. Установить [Git](https://git-scm.com/ "ссылка на сайт Git")
 3. Скачайть или склонировать себе командой:
 ```sh
-    git clone https://github.com/cactys/react-mesto-auth.git
+    git clone https://github.com/cactys/react-mesto-api-full.git
 ```
-4. Установите зависимости:
+4. Перейти в каталог
+```sh
+    frontend 'cd ./frontend'
+```
+5. Установите зависимости:
 ```sh
     npm i
 ```
-5. Запустить проект:
+6. Запустить проект:
 ```sh
     npm run start
 ```
