@@ -1,8 +1,8 @@
 # react-mesto-api-full
 ## FRONTEND
-https://cactys.nomoredomains.icu
+https://cactys.nomoredomains.icu ***сервер не доступен, в процессе поиска куда задеплоить***
 ## BACKEND
-https://api.cactys.nomoredomains.icu
+https://api.cactys.nomoredomains.icu ***сервер не доступен, в процессе поиска куда задеплоить***
 
 Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`. 
   
