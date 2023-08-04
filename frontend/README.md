@@ -2,7 +2,7 @@
 
 <p align="center"><kbd> <img width="768" height="auto" align="center" src="./DEMO.gif" alt="DEMO"> </kbd></p>
 
-**[Ссылка на DEMO проекта](https://cactys.nomoredomains.icu/sign-in)**  
+**[Ссылка на DEMO проекта](https://mesto.khortys.space)**  
   - *[макет Figma](https://www.figma.com/file/5H3gsn5lIGPwzBPby9jAOo/JavaScript.-Sprint-12?node-id=0%3A1)*
 
 Интерактивная страница, на которой пользователи могут делиться фотографиями, удалять их и ставить лайки.  
