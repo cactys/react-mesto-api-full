@@ -1,6 +1,6 @@
 const allowedCors = [
-  'https://cactys.nomoredomains.icu',
-  'http://cactys.nomoredomains.icu',
+  'https://mesto.khortys.space',
+  'http://mesto.khortys.space',
   'http://localhost:3000',
 ];
 
